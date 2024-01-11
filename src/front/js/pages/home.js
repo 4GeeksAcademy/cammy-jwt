@@ -19,9 +19,9 @@ export const Home = () => {
 			<p>
 				<img src={rigoImageUrl} />
 			</p>
-			<div className="alert alert-info">
+			{store.message && <div className="alert alert-info">
 				{store.message}
-			</div>
+			</div>}
 			<p>
 				This boilerplate comes with lots of documentation:{" "}
 				<a href="https://start.4geeksacademy.com/starters/react-flask">

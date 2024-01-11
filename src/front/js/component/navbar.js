@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext"
 import { Link } from "react-router-dom";
 
+import "../../styles/navbar.css"
+
 export const Navbar = () => {
 	const {store, actions} = useContext(Context);
 
@@ -13,9 +15,14 @@ export const Navbar = () => {
 				</Link>
 				<div className="ml-auto">
 					{!store.token ? 
+					<div>
+					<Link to="/signup">
+						<button className="btn btn-primary signup">Sign up</button>
+					</Link>	
 					<Link to="/login">
 						<button className="btn btn-primary">Log in</button>
 					</Link>	
+					</div>
 			:
 					<button onClick={() => actions.logout()} className="btn btn-primary">Logout</button>
 			}

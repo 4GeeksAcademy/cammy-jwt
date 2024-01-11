@@ -22,14 +22,30 @@ def create_token():
     if email is None or password is None:
         return jsonify({"msg": "Bad email or password"}), 401
 
+    user = User.query.filter(User.email == email).first()
+    if user is None or user.password != password:
+        return jsonify({"msg": "Bad email or password"}), 401
+
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+@api.route("/signup", methods=["POST"])
+def sign_up():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    if email is None or password is None:
+        return jsonify({"msg": "Bad email or password"}), 401
+
+    user = User(email = email, password = password, is_active=True)
+    db.session.add(user)
+    db.session.commit()
+    return jsonify({"msg": "Success"}), 200
 
 @api.route("/hello", methods=["GET"])
 @jwt_required()
 def get_hello():
     email = get_jwt_identity()
     dictionary ={
-        "messge": "hello world " + email
+        "message": "hello " + email
     }
     return jsonify(dictionary)
