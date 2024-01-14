@@ -23,7 +23,7 @@ export const Signup = () => {
 		<div className="text-center mt-5">
 			<h1>Signup Page</h1>
 				{store.token && store.token!="" && store.token!=undefined ? (
-					"You are now signed up!" + store.token 
+					"You are now signed up!"
 				) : (
 				<div>
 					<input 
