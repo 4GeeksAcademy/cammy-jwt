@@ -11,7 +11,6 @@ export const Login = () => {
 	const navigate = useNavigate();
 
 	const token = sessionStorage.getItem("token");
-	console.log("This is your token", store.token)
 
 	const handleClick = () => {
 		actions.login(email,password)
@@ -23,7 +22,7 @@ export const Login = () => {
 		<div className="text-center mt-5">
 			<h1>Login</h1>
 				{store.token && store.token!="" && store.token!=undefined ? (
-					"You are logged in with this token" + store.token 
+					"You have successfully logged in"
 				) : (
 				<div>
 					<input 

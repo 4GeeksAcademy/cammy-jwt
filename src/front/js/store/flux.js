@@ -54,7 +54,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 						
 					const data = await resp.json();
-						console.log("this came from the backend", data);
 						sessionStorage.setItem("token", data.access_token);
 						setStore({ token: data.access_token})
 						return true;
@@ -85,7 +84,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 					
 				const data = await resp.json();
-					console.log("this came from the backend", data);
 					sessionStorage.setItem("token", data.access_token);
 					setStore({ token: data.access_token})
 					return true;

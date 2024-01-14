@@ -11,7 +11,6 @@ export const Signup = () => {
 	const navigate = useNavigate();
 
 	const token = sessionStorage.getItem("token");
-	console.log("This is your token", store.token)
 
 	const handleClick = () => {
 		actions.signup(email,password);
