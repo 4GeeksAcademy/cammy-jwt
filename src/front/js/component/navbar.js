@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../../styles/navbar.css"
 
 export const Navbar = () => {
 	const {store, actions} = useContext(Context);
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		actions.logout();
+		navigate("/login");
+	}
 
 	return (
 		<nav className="navbar navbar-light bg-light">
@@ -24,7 +30,7 @@ export const Navbar = () => {
 					</Link>	
 					</div>
 			:
-					<button onClick={() => actions.logout()} className="btn btn-primary">Logout</button>
+					<button onClick={handleLogout} className="btn btn-primary">Logout</button>
 			}
 				</div>
 			</div>
